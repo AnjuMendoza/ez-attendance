@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ Attendance</title>
+
+    <!-- Link CSS file from  static folder -->
+    <link rel="stylesheet" href="{% static 'ez_attendance/css/home.css' %}">
+</head>
+<body>
+
+    <!-- Main page wrapper -->
+    <div class="page-wrapper">
+
+        <!-- Top navigation bar -->
+        <header class="navbar">
+            <div class="container nav-content">
+                <div class="logo">EZ Attendance</div>
+
+                <nav class="nav-links">
+                    <a href="#">Features</a>
+                    <a href="#">How It Works</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Login</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="container hero-grid">
+
+                <!-- Left side hero text -->
+                <div class="hero-text">
+                    <p class="eyebrow">Simple QR-based attendance for classrooms</p>
+
+                    <h1>Track attendance faster with clean QR check-ins.</h1>
+
+                    <p class="hero-description">
+                        EZ Attendance helps professors generate attendance sessions,
+                        let students scan a live QR code, and keep everything organized
+                        in one simple dashboard.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                        <a href="#" class="btn btn-secondary">See Features</a>
+                    </div>
+
+                    <!-- Small stat cards under hero buttons -->
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <h3>Fast</h3>
+                            <p>Open a session and start tracking in seconds.</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3>Secure</h3>
+                            <p>Use expiring QR sessions to reduce fake check-ins.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side preview card -->
+                <div class="hero-preview">
+                    <div class="preview-card">
+                        <div class="preview-top">
+                            <span class="badge">Live Session</span>
+                            <span class="status-dot"></span>
+                        </div>
+
+                        <h2>COMP 3000 Attendance</h2>
+                        <p class="preview-subtext">Today's session is active and accepting student check-ins.</p>
+
+                        <div class="preview-box">
+                            <div class="qr-placeholder">QR</div>
+
+                            <div class="preview-details">
+                                <div class="detail-row">
+                                    <span>Session Code</span>
+                                    <strong>#A102</strong>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Submissions</span>
+                                    <strong>28 Students</strong>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Status</span>
+                                    <strong>Open</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="preview-button">Export PDF</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Features</p>
+                    <h2>Everything needed for quick classroom attendance</h2>
+                    <p>
+                        Built for simple attendance tracking without making professors
+                        deal with cluttered systems.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>QR Session Creation</h3>
+                        <p>Create a new attendance session instantly and display a fresh QR code for students to scan.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Professor Dashboard</h3>
+                        <p>Review active and past sessions, monitor submissions, and keep course attendance organized.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>PDF Reports</h3>
+                        <p>Export clean attendance sheets that are easy to save, review, and share when needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simple footer -->
+        <footer class="footer">
+            <div class="container footer-content">
+                <p>© 2026 EZ Attendance. Built with Django.</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

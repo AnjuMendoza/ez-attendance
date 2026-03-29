@@ -1,15 +1,61 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - ScannedIn</title>
+
+    <!-- I reused the same auth theme CSS so colors/fonts/style stay consistent -->
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <!-- I added a dedicated dashboard stylesheet for layout only -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
-    <h1>Welcome, {{ request.user.first_name }} {{ request.user.last_name }}</h1>
-    <p>Email: {{ request.user.email }}</p>
-    <p>Role: {{ role }}</p>
-    <p>Phone: {{ request.user.profile.phone_number }}</p>
-    <a href="{% url 'logout' %}">Logout</a>
+    <!-- I kept the same navbar structure/style as login/register -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">ScannedIn</div>
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'logout' %}">Log Out</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-page">
+        <section class="dashboard-shell">
+            <div class="dashboard-top">
+                <h1>Dashboard</h1>
+                <p>Welcome back, {{ request.user.first_name }} {{ request.user.last_name }}.</p>
+            </div>
+
+            <div class="dashboard-body">
+                <div class="dashboard-card">
+                    <h2>Quick Actions</h2>
+                    <p class="helper-text">Choose what you want to do next.</p>
+
+                    <!-- Main action buttons requested -->
+                    <div class="dashboard-actions">
+                        <a href="#" class="btn btn-primary action-btn">Create New Class</a>
+                        <a href="#" class="btn btn-primary action-btn">Quick Attendance</a>
+                    </div>
+                </div>
+
+                <div class="dashboard-card profile-card">
+                    <h2>Your Info</h2>
+                    <p><strong>Email:</strong> {{ request.user.email }}</p>
+                    <p><strong>Role:</strong> {{ role }}</p>
+                    <p><strong>Phone:</strong> {{ request.user.profile.phone_number }}</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="footer">
+            <div class="container footer-content">
+                <p>© 2026 ScannedIn. Built with Django.</p>
+            </div>
+        </footer>
 </body>
 </html>

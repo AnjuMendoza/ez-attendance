@@ -1,0 +1,97 @@
+/* I kept this consistent with auth.css palette + typography */
+.dashboard-page {
+    padding: 60px 0 90px;
+}
+
+.dashboard-shell {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.dashboard-top {
+    background-color: #111827;
+    color: #ffffff;
+    padding: 24px 28px;
+}
+
+.dashboard-top h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.dashboard-top p {
+    color: #e5e7eb;
+    font-size: 1rem;
+}
+
+.dashboard-body {
+    padding: 24px 28px 30px;
+    display: grid;
+    gap: 16px;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 22px;
+}
+
+.dashboard-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #111827;
+}
+
+.helper-text {
+    color: #6b7280;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+/* action buttons row */
+.dashboard-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    min-width: 190px;
+    text-align: center;
+}
+
+.profile-card p {
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-page {
+        padding: 36px 0 56px;
+    }
+
+    .dashboard-shell {
+        border-radius: 18px;
+    }
+
+    .dashboard-top,
+    .dashboard-body {
+        padding: 18px;
+    }
+
+    .dashboard-top h1 {
+        font-size: 1.55rem;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}

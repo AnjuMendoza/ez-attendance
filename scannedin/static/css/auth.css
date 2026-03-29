@@ -234,3 +234,14 @@ body {
         font-size: 1.55rem;
     }
 }
+
+/* Added so field-level Django errors are visible */
+.errorlist {
+    list-style: none;
+    margin: 6px 0 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #991b1b;
+    font-size: 0.9rem;
+}

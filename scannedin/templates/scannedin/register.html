@@ -45,24 +45,31 @@
 
                         <label>First Name</label>
                         {{ form.first_name }}
+                        {{ form.first_name.errors }}
 
                         <label>Last Name</label>
                         {{ form.last_name }}
+                        {{ form.last_name.errors }}
 
                         <label>Email</label>
                         {{ form.email }}
+                        {{ form.email.errors }}
 
                         <label>Phone Number</label>
                         {{ form.phone_number }}
+                        {{ form.phone_number.errors }}
 
                         <label>I am a</label>
                         {{ form.role }}
+                        {{ form.role.errors }}
 
                         <label>Password</label>
                         {{ form.password }}
+                        {{ form.password.errors }}
 
                         <label>Confirm Password</label>
                         {{ form.confirm_password }}
+                        {{ form.confirm_password.errors }}
 
                         <button type="submit" class="btn btn-primary auth-submit">Sign Up</button>
                     </form>
@@ -75,5 +82,11 @@
             </div>
         </section>
     </main>
+
+        <footer class="footer">
+            <div class="container footer-content">
+                <p>© 2026 ScannedIn. Built with Django.</p>
+            </div>
+        </footer>
 </body>
 </html>

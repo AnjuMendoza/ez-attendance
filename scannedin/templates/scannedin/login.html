@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In - ScannedIn</title>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+    <!-- Same top navbar style as home -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">ScannedIn</div>
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'register' %}">Create Account</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <!-- Use same shell as register so width + style match -->
+        <section class="auth-shell">
+            <div class="auth-shell-top">
+                <h1>Log In</h1>
+                <p>Welcome back. Log in to continue using ScannedIn.</p>
+            </div>
+
+            <div class="auth-shell-body">
+                <div class="auth-card">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <form method="post" class="auth-form">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        <label>Email</label>
+                        {{ form.email }}
+
+                        <label>Password</label>
+                        {{ form.password }}
+
+                        <button type="submit" class="btn btn-primary auth-submit">Log In</button>
+                    </form>
+
+                    <p class="auth-switch">
+                        Don’t have an account?
+                        <a href="{% url 'register' %}">Create one</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

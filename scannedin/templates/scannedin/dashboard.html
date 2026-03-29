@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - ScannedIn</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.first_name }} {{ request.user.last_name }}</h1>
+    <p>Email: {{ request.user.email }}</p>
+    <p>Role: {{ role }}</p>
+    <p>Phone: {{ request.user.profile.phone_number }}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>

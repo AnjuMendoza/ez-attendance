@@ -1,0 +1,236 @@
+/* Keep same base style as home.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* same as home */
+    background-color: #f7f8fc;      /* same as home */
+    color: #111827;                 /* same as home */
+    line-height: 1.6;               /* same as home */
+}
+
+/* Reuse home container rhythm */
+.container {
+    width: 90%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+/* Same navbar styling as home */
+.navbar {
+    padding: 24px 0;
+    background-color: #f7f8fc;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #374151;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #111827;
+}
+
+/* Page section spacing similar to hero top spacing */
+.auth-page {
+    padding: 60px 0 90px;
+}
+
+/* Shared auth wrapper */
+.auth-shell {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+/* Replace red header with dark theme */
+.auth-shell-top {
+    background-color: #111827; /* dark from home button */
+    color: #ffffff;
+    padding: 24px 28px;
+}
+
+.auth-shell-top h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.auth-shell-top p {
+    color: #e5e7eb;
+    font-size: 1rem;
+}
+
+/* Body */
+.auth-shell-body {
+    padding: 24px 28px 30px;
+}
+
+/* One-column card layout */
+.auth-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 22px;
+}
+
+.auth-card h2,
+.auth-card h1 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #111827;
+}
+
+.helper-text {
+    color: #6b7280;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+/* Form controls */
+.auth-form label {
+    display: block;
+    margin: 10px 0 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #111827;
+    background: #ffffff;
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+    outline: none;
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
+}
+
+/* Use exact home button class vibe */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+.auth-submit {
+    width: 100%;
+    margin-top: 16px;
+}
+
+/* Small link row below form */
+.auth-switch {
+    margin-top: 14px;
+    text-align: center;
+    color: #4b5563;
+    font-size: 1rem;
+}
+
+.auth-switch a {
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* Django messages */
+.messages {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+.messages li {
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.messages .success {
+    background: #ecfdf3;
+    color: #166534;
+}
+
+.messages .error {
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+.messages .info {
+    background: #eff6ff;
+    color: #1e3a8a;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .auth-page {
+        padding: 36px 0 56px;
+    }
+
+    .auth-shell {
+        border-radius: 18px;
+    }
+
+    .auth-shell-top,
+    .auth-shell-body {
+        padding: 18px;
+    }
+
+    .auth-shell-top h1 {
+        font-size: 1.55rem;
+    }
+}

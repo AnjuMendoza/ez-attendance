@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account - ScannedIn</title>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+    <!-- Keep header consistent with original home theme -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">ScannedIn</div>
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'login' %}">Log In</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-shell auth-shell-login">
+            <div class="auth-shell-top">
+                <h1>Create account</h1>
+                <p>Sign up to start using ScannedIn attendance tools.</p>
+            </div>
+
+            <div class="auth-shell-body">
+                <div class="auth-card">
+                    <h2>Register</h2>
+                    <p class="helper-text">Please fill in all required details.</p>
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <form method="post" class="auth-form">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        <label>First Name</label>
+                        {{ form.first_name }}
+
+                        <label>Last Name</label>
+                        {{ form.last_name }}
+
+                        <label>Email</label>
+                        {{ form.email }}
+
+                        <label>Phone Number</label>
+                        {{ form.phone_number }}
+
+                        <label>I am a</label>
+                        {{ form.role }}
+
+                        <label>Password</label>
+                        {{ form.password }}
+
+                        <label>Confirm Password</label>
+                        {{ form.confirm_password }}
+
+                        <button type="submit" class="btn btn-primary auth-submit">Sign Up</button>
+                    </form>
+
+                    <p class="auth-switch">
+                        Already have an account?
+                        <a href="{% url 'login' %}">Log in</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

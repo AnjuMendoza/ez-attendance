@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Attendance Setup</title>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+    <main class="auth-page">
+        <section class="auth-shell">
+            <div class="auth-shell-top">
+                <h1>Quick Attendance Setup</h1>
+                <p>Configure session details before generating the QR code.</p>
+            </div>
+
+            <div class="auth-shell-body">
+                <div class="auth-card">
+                    <p class="helper-text">
+                        Set the course, class name, and sign-in window.
+                    </p>
+
+                    <form method="post" class="auth-form">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        <label for="{{ form.course_name.id_for_label }}">Course</label>
+                        {{ form.course_name }}
+                        {{ form.course_name.errors }}
+
+                        <label for="{{ form.class_name.id_for_label }}">Class Name</label>
+                        {{ form.class_name }}
+                        {{ form.class_name.errors }}
+
+                        <label for="{{ form.duration_minutes.id_for_label }}">Sign-in Duration (minutes)</label>
+                        {{ form.duration_minutes }}
+                        {{ form.duration_minutes.errors }}
+
+                        <button type="submit" class="btn btn-primary auth-submit">
+                            Generate QR Session
+                        </button>
+                    </form>
+
+                    <p style="margin-top: 1rem;">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

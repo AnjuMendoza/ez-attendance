@@ -40,6 +40,12 @@ class AttendanceSession(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
     expires_at = models.DateTimeField(null=True, blank=True)
+
+    # Customization fields
+    course_name = models.CharField(max_length=120, default="General Course")
+    class_name = models.CharField(max_length=120, default="Class 1")
+    duration_minutes = models.PositiveIntegerField(default=5)
+
     professor = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -47,4 +53,4 @@ class AttendanceSession(models.Model):
     )
 
     def __str__(self):
-        return f"Session {self.token} by {self.professor.email}"
+        return f"{self.course_name} | {self.class_name} | {self.professor.email}"

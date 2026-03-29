@@ -5,6 +5,7 @@ from .views import (
     login_view,
     dashboard,
     logout_view,
+    quick_attendance_setup,   # add this
     start_quick_attendance,
     quick_checkin,
 )
@@ -17,6 +18,7 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),
 
     # Quick attendance
+    path("quick-attendance/setup/", quick_attendance_setup, name="quick_attendance_setup"),
     path("quick-attendance/start/", start_quick_attendance, name="start_quick_attendance"),
     path("quick-attendance/checkin/<uuid:token>/", quick_checkin, name="quick_checkin"),
 ]

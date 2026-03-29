@@ -11,6 +11,11 @@
     <main class="auth-page">
         <section class="auth-card" style="max-width: 700px;">
             <h1>Attendance Session Created</h1>
+
+            <p><strong>Course:</strong> {{ session.course_name }}</p>
+            <p><strong>Class:</strong> {{ session.class_name }}</p>
+            <p><strong>Sign-in window:</strong> {{ session.duration_minutes }} minutes</p>
+
             <p>Session token: <code>{{ session.token }}</code></p>
             <p>Expires at: {{ session.expires_at }}</p>
 

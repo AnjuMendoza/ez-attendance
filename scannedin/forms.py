@@ -1,7 +1,7 @@
 # Registration form taken from web
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, AttendanceSession
 
 
 class RegisterForm(forms.Form):
@@ -35,3 +35,20 @@ class LoginForm(forms.Form):
     # Simple login form (using email + password)
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class QuickAttendanceSetupForm(forms.ModelForm):
+    class Meta:
+        model = AttendanceSession
+        fields = ["course_name", "class_name", "duration_minutes"]
+        widgets = {
+            "course_name": forms.TextInput(attrs={"placeholder": "e.g., CS101"}),
+            "class_name": forms.TextInput(attrs={"placeholder": "e.g., Class 1"}),
+            "duration_minutes": forms.NumberInput(attrs={"min": 1, "max": 180}),
+        }
+
+    def clean_duration_minutes(self):
+        minutes = self.cleaned_data["duration_minutes"]
+        if minutes < 1 or minutes > 180:
+            raise forms.ValidationError("Duration must be between 1 and 180 minutes.")
+        return minutes

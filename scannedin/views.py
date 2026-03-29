@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 
 from .forms import RegisterForm, LoginForm
 from .models import UserProfile, AttendanceSession
+from .forms import RegisterForm, LoginForm, QuickAttendanceSetupForm
 
 
 def home(request):
@@ -84,21 +85,49 @@ def logout_view(request):
     messages.info(request, "You have been logged out.")
     return redirect("login")
 
-# Initialize attendance scanning session
 @login_required
-def start_quick_attendance(request):
-    # Optional safety: only professors can start sessions
+def quick_attendance_setup(request):
     if getattr(request.user.profile, "role", None) != "professor":
         messages.error(request, "Only professors can start quick attendance.")
         return redirect("dashboard")
 
-    # Set expiry (example: 15 minutes from now)
-    expiry_time = timezone.now() + timedelta(minutes=15)
+    form = QuickAttendanceSetupForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        request.session["quick_attendance_setup"] = {
+            "course_name": form.cleaned_data["course_name"],
+            "class_name": form.cleaned_data["class_name"],
+            "duration_minutes": form.cleaned_data["duration_minutes"],
+        }
+        return redirect("start_quick_attendance")
+
+    return render(request, "scannedin/quick_attendance_setup.html", {"form": form})
+
+# Initialize attendance scanning session
+@login_required
+def start_quick_attendance(request):
+    if getattr(request.user.profile, "role", None) != "professor":
+        messages.error(request, "Only professors can start quick attendance.")
+        return redirect("dashboard")
+
+    setup_data = request.session.get("quick_attendance_setup")
+    if not setup_data:
+        messages.error(request, "Please complete attendance setup first.")
+        return redirect("quick_attendance_setup")
+
+    duration_minutes = setup_data.get("duration_minutes", 5)
+    expiry_time = timezone.now() + timedelta(minutes=duration_minutes)
 
     session = AttendanceSession.objects.create(
         professor=request.user,
-        expires_at=expiry_time
+        expires_at=expiry_time,
+        course_name=setup_data.get("course_name", "").strip(),
+        class_name=setup_data.get("class_name", "").strip(),
+        duration_minutes=duration_minutes,
     )
+
+    # Clear one-time setup data after creating the session
+    request.session.pop("quick_attendance_setup", None)
 
     checkin_url = request.build_absolute_uri(
         reverse("quick_checkin", args=[session.token])
